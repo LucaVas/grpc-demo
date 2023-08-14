@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_package = "com.luca.grpc";
+
+// define apis in the service
+service user {
+  // login: api name exposed to client
+  rpc login(LoginRequest) returns (APIResponse);
+  // logout: do not take parameters
+  rpc logout(Empty) returns (APIResponse);
+}
+
+message LoginRequest {
+  // login parameters to pass to api
+  string username = 1;
+  string password = 2;
+}
+
+message APIResponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message Empty {}
